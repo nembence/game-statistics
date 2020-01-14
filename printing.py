@@ -26,14 +26,20 @@ def functions(question,filename):
         genre=input("Which genre do you want to check: ")
         print(reports.count_by_genre(filename,genre))
     elif question == 5:
-        title=input("What title do you want to check: ")
-        print(reports.get_line_number_by_title(filename,title))
+        try:
+            title=input("What title do you want to check: ")
+            print(reports.get_line_number_by_title(filename,title))
+        except ValueError:
+            print("This title is not in the list!")
     elif question == 6:
         print(reports.sort_abc(filename))
     elif question == 7:
         print(reports.get_genres(filename))
     elif question == 8:
-        print(reports.when_was_top_sold_fps(filename))
+        try:
+            print(reports.when_was_top_sold_fps(filename))
+        except ValueError:
+            print("There is no FPS game in the list!")
     
 def ask():
     back = input("Do you want to ask again (y/n): ")
